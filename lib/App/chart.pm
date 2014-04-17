@@ -10,7 +10,8 @@ use Text::Graph::DataSet; # bug in Text::Graph, doesn't load this
 use Moo;
 with 'SHARYANTO::Role::TermAttrs';
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
+our $DATE = '2014-04-17'; # DATE
 
 sub gen_chart {
     my ($self, %args) = @_;
@@ -130,7 +131,7 @@ App::chart - Create chart for your data structure
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
