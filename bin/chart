@@ -7,7 +7,8 @@ use warnings;
 use App::chart;
 use Getopt::Long;
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
+our $DATE = '2014-04-17'; # DATE
 
 my %Opts = (
     input       => 'json',
@@ -57,10 +58,14 @@ sub get_input {
     local $/;
     if ($Opts{input} eq 'json') {
         require JSON;
+        require Perinci::Result::Util;
         $Data = JSON->new->allow_nonref->decode(~~<>);
+        $Data = $Data->[2] if Perinci::Result::Util::is_env_res($Data);
     } elsif ($Opts{input} eq 'yaml') {
+        require Perinci::Result::Util;
         require YAML::Syck;
         $Data = YAML::Syck::Load(~~<>);
+        $Data = $Data->[2] if Perinci::Result::Util::is_env_res($Data);
     } elsif ($Opts{input} eq 'perl') {
         $Data = eval(~~<>);
     } else {
@@ -108,7 +113,7 @@ chart - Create chart for your data structure
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -200,7 +205,8 @@ Pick chart type. Available type: C<line>, C<bar>. Default is C<bar>.
 
 Autodetect input format.
 
-Option: use boxchar and Unicode characters.
+Option: use boxchar and Unicode characters. See also: L<Term::Spark>,
+L<Term::Vspark>.
 
 Option: color.
 
