@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Create chart for your data structure",
+  "ABSTRACT" => "Generate text-based chart",
   "AUTHOR" => "Steven Haryanto <stevenharyanto\@gmail.com>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -24,11 +24,9 @@ my %WriteMakefileArgs = (
   "NAME" => "App::chart",
   "PREREQ_PM" => {
     "JSON" => 0,
-    "Moo" => 0,
     "Perinci::Result::Util" => 0,
-    "SHARYANTO::Role::TermAttrs" => 0,
-    "Text::Graph" => 0,
-    "Text::Graph::DataSet" => 0,
+    "TableData::Object" => 0,
+    "Text::Chart" => 0,
     "YAML::Syck" => 0
   },
   "TEST_REQUIRES" => {
@@ -37,7 +35,7 @@ my %WriteMakefileArgs = (
     "IPC::Open3" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.02",
+  "VERSION" => "0.03",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -49,12 +47,10 @@ my %FallbackPrereqs = (
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
   "JSON" => 0,
-  "Moo" => 0,
   "Perinci::Result::Util" => 0,
-  "SHARYANTO::Role::TermAttrs" => 0,
+  "TableData::Object" => 0,
   "Test::More" => 0,
-  "Text::Graph" => 0,
-  "Text::Graph::DataSet" => 0,
+  "Text::Chart" => 0,
   "YAML::Syck" => 0
 );
 
